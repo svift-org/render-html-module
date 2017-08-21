@@ -1,0 +1,31 @@
+# humanstxt.org/
+# The humans responsible & technology colophon
+
+# TEAM
+
+  Visualisation and Backend: Sebastian Meier
+  Site: http://www.vislab.io
+  Twitter: @seb_meier
+  Location: Berlin, Germany
+
+  Visualisation and Design: Alsino Skowronnek
+  Site: http://alsino.io
+  Twitter: @alsinosko
+  Location: Berlin, Germany
+
+  Visualisation and Frontend: Hans Hack
+  Site: http://hanshack.com
+  Twitter: @hnshck
+  Location: Berlin, Germany
+
+# THANKS
+
+  MIZ - Medieninnovationszentrum Babelsberg
+  Why: Initial Funding
+  Site: http://www.miz-babelsberg.de
+  Location: Babelsberg, Germany
+
+# TECHNOLOGY COLOPHON
+
+    HTML5, CSS3
+    jQuery, Modernizr
