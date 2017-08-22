@@ -6,30 +6,54 @@
 
 'use strict';
 
+var fs = require('fs-extra'),
+  package = require('./node_modules/vis_frontend/package.json'),
+  minify = require('html-minifier').minify
+
 var render = (function () {
  
   var module = {},
     template = null,
-    scripts = {},
-    styles = {}
+    d3 = null,
+    vis = {}
 
   //Load template and scripts+styles
   module.init = function () {
-    for(var key in renderer){
-      renderer[key].init()
+    template = fs.readFileSync('template.html', 'utf8')
+    d3 = fs.readFileSync('./assets/d3.v4.min.js', 'utf8')
+    for(var key in package.dependencies){
+      if(key.substring(0,10) == 'svift-vis-'){
+        var vkey = key.substring(10)
+        vis[vkey] = {
+          style:fs.readFileSync('./node_modules/vis_frontend/build/'+key+'.css', 'utf8'),
+          script:fs.readFileSync('./node_modules/vis_frontend/build/'+key+'.min.js', 'utf8')
+        }
+      }
     }
   }
 
-  module.renderCallback = function () {
-    rendererCCount++;
-    if(rendererCCount >= rendererCount){
-      console.log('render complete');
-      renderBundle.bundle(module.bundleCallback);
-    }
-  }
+  module.render = function (data, path) {
+    var rendered = template
 
-  module.bundleCallback = function () {
-    console.log('everything done');
+    //{{ TITLE }}
+    //{{ DESCRIPTION }}
+
+    rendered.replace('{{ STYLES }}', vis[data.vis.type].style)
+    rendered.replace('{{ SCRIPTS }}', d3+vis[data.vis.type].script)
+
+    //For now this is only the container, later this should include sharing/embeding/fullscreen/title etc. see seb-meier/d3-share
+    rendered.replace('{{ HTML }}', '<div id="container"></div>')
+
+    rendered.replace('{{ CODE }}', 'v = SVIFT.vis.' + data.vis.type + '(' + JSON.stringify(data) + ', d3.select("#container")); v.init(); v.play();')
+
+    fs.writeFileSync(path + '/index.html', rendered, 'utf8')
+
+    //Copy assets to folder
+    //TODO tile and tile-wide should be replaced by actual renderings of the visualisation
+    var files = ['apple-touch-icon.png', 'browserconfig.xml', 'crossdomain.xml', 'favicon.ico', 'humans.txt', 'robots.txt', 'tile-wide.png', 'tile.png']
+    files.forEach(function(file){
+      fs.copySync('./assets/'+file, path+'/'+file);
+    })
   }
  
   return module;
@@ -37,3 +61,4 @@ var render = (function () {
 })();
 
 module.exports = render;
+

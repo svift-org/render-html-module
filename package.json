@@ -14,7 +14,10 @@
   "license": "MIT",
   "homepage": "https://bitbucket.org/svift/render-html-module#readme",
   "dependencies": {
-    "uglify-js": "^3.0.27",
-    "svift-frontend": "git+ssh://git@bitbucket.org:svift/svift-frontend.git"
+    "fs": "0.0.1-security",
+    "fs-extra": "^4.0.1",
+    "html-minifier": "^3.5.3",
+    "svift-frontend": "git+ssh://git@bitbucket.org:svift/svift-frontend.git",
+    "uglify-js": "^3.0.27"
   }
 }
