@@ -49,7 +49,7 @@ var render = (function () {
 
     rendered.replace('{{ CODE }}', 'v = SVIFT.vis.' + data.vis.type + '(' + JSON.stringify(data) + ', d3.select("#container")); v.init(); v.play();')
 
-    fs.writeFileSync(path + '/index.html', rendered, 'utf8')
+    fs.writeFileSync('.' + path + '/index.html', rendered, 'utf8')
 
     //Copy assets to folder
     //TODO tile and tile-wide should be replaced by actual renderings of the visualisation
