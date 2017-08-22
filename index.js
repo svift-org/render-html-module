@@ -41,15 +41,15 @@ var render = (function () {
     //{{ TITLE }}
     //{{ DESCRIPTION }}
 
-    rendered.replace('{{ STYLES }}', vis[data.vis.type].style)
-    rendered.replace('{{ SCRIPTS }}', d3+vis[data.vis.type].script)
+    rendered.replace("{{ STYLES }}", vis[data.vis.type].style)
+    rendered.replace("{{ SCRIPTS }}", d3+vis[data.vis.type].script)
 
     //For now this is only the container, later this should include sharing/embeding/fullscreen/title etc. see seb-meier/d3-share
-    rendered.replace('{{ HTML }}', '<div id="container"></div>')
+    rendered.replace("{{ HTML }}", '<div id="container"></div>')
 
-    rendered.replace('{{ CODE }}', 'v = SVIFT.vis.' + data.vis.type + '(' + JSON.stringify(data) + ', d3.select("#container")); v.init(); v.play();')
+    rendered.replace("{{ CODE }}", 'v = SVIFT.vis.' + data.vis.type + '(' + JSON.stringify(data) + ', d3.select("#container")); v.init(); v.play();')
 
-    fs.writeFileSync('.' + path + '/index.html', rendered, 'utf8')
+    fs.writeFileSync('.' + path + '/html/index.html', rendered, 'utf8')
 
     //Copy assets to folder
     //TODO tile and tile-wide should be replaced by actual renderings of the visualisation
