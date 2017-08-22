@@ -55,7 +55,7 @@ var render = (function () {
     //TODO tile and tile-wide should be replaced by actual renderings of the visualisation
     var files = ['apple-touch-icon.png', 'browserconfig.xml', 'crossdomain.xml', 'favicon.ico', 'humans.txt', 'robots.txt', 'tile-wide.png', 'tile.png']
     files.forEach(function(file){
-      fs.copySync( __dirname + '/assets/'+file, '.' + path+'/'+file);
+      fs.copySync( __dirname + '/assets/'+file, '.' + path+'/html/'+file);
     })
   }
  
