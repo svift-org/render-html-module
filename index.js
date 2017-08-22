@@ -7,7 +7,6 @@
 'use strict';
 
 var fs = require('fs-extra'),
-  pg = require( global.rootDir + '/node_modules/svift-frontend/package.json'),
   minify = require('html-minifier').minify
 
 var render = (function () {
@@ -15,10 +14,14 @@ var render = (function () {
   var module = {},
     template = null,
     d3 = null,
-    vis = {}
+    vis = {},
+    rootDir = null
 
   //Load template and scripts+styles
-  module.init = function () {
+  module.init = function (dir) {
+    rootDir = dir
+
+    pg = require( rootDir + '/node_modules/svift-frontend/package.json'),
     template = fs.readFileSync('template.html', 'utf8')
     d3 = fs.readFileSync('./assets/d3.v4.min.js', 'utf8')
     for(var key in pg.dependencies){
