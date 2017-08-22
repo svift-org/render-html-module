@@ -7,7 +7,7 @@
 'use strict';
 
 var fs = require('fs-extra'),
-  pg = require('./node_modules/svift-frontend/package.json'),
+  pg = require( __dirname + '/node_modules/svift-frontend/package.json'),
   minify = require('html-minifier').minify
 
 var render = (function () {
