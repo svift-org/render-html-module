@@ -7,7 +7,7 @@
 'use strict';
 
 var fs = require('fs-extra'),
-  package = require('./node_modules/vis_frontend/package.json'),
+  pg = require('./node_modules/vis_frontend/package.json'),
   minify = require('html-minifier').minify
 
 var render = (function () {
@@ -21,7 +21,7 @@ var render = (function () {
   module.init = function () {
     template = fs.readFileSync('template.html', 'utf8')
     d3 = fs.readFileSync('./assets/d3.v4.min.js', 'utf8')
-    for(var key in package.dependencies){
+    for(var key in pg.dependencies){
       if(key.substring(0,10) == 'svift-vis-'){
         var vkey = key.substring(10)
         vis[vkey] = {
