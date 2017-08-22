@@ -28,8 +28,8 @@ var render = (function () {
       if(key.substring(0,10) == 'svift-vis-'){
         var vkey = key.substring(10)
         vis[vkey] = {
-          style:fs.readFileSync(rootDir + '/node_modules/svift_frontend/build/svift-'+vkey+'.css', 'utf8'),
-          script:fs.readFileSync(rootDir + '/node_modules/svift_frontend/build/svift-'+vkey+'.min.js', 'utf8')
+          style:fs.readFileSync(rootDir + '/node_modules/svift-frontend/build/svift-'+vkey+'.css', 'utf8'),
+          script:fs.readFileSync(rootDir + '/node_modules/svift-frontend/build/svift-'+vkey+'.min.js', 'utf8')
         }
       }
     }
