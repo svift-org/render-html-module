@@ -8,16 +8,16 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@bitbucket.org/svift/render-html-module.git"
+    "url": "git+https://git@github.com/svift-org/render-html-module.git"
   },
   "author": "Sebastian Meier",
   "license": "MIT",
-  "homepage": "https://bitbucket.org/svift/render-html-module#readme",
+  "homepage": "https://github.com/svift-org/render-html-module#readme",
   "dependencies": {
     "fs": "0.0.1-security",
     "fs-extra": "^4.0.1",
     "html-minifier": "^3.5.3",
-    "svift-frontend": "git+ssh://git@bitbucket.org:svift/svift-frontend.git",
+    "svift-frontend": "git+https://git@github.com/svift-org/svift-frontend.git",
     "uglify-js": "^3.0.27"
   }
 }
