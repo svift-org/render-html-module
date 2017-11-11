@@ -20,7 +20,7 @@ var render = (function () {
   //Load template and scripts+styles
   module.init = function (dir) {
     rootDir = dir
-    var pg = JSON.parse(fs.readFileSync(rootDir + '/node_modules/svift-frontend/package.json'))
+    var pg = require( rootDir + '/node_modules/svift-frontend/package.json')
 
     template = fs.readFileSync(__dirname + '/template.html', 'utf8')
     d3 = fs.readFileSync(__dirname + '/assets/d3.v4.min.js', 'utf8')
