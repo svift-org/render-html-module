@@ -20,7 +20,7 @@ var render = (function () {
   //Load template and scripts+styles
   module.init = function (dir) {
     rootDir = dir
-    var pg = require( __dirname + '/node_modules/svift-frontend/package.json')
+    var pg = require( rootDir + '/node_modules/svift-frontend/package.json')
 
     template = fs.readFileSync(__dirname + '/template.html', 'utf8')
     d3 = fs.readFileSync(__dirname + '/assets/d3.v4.min.js', 'utf8')
@@ -28,8 +28,8 @@ var render = (function () {
       if(key.substring(0,10) == 'svift-vis-'){
         var vkey = key.substring(10)
         vis[vkey] = {
-          style:fs.readFileSync(__dirname + '/node_modules/svift-frontend/build/svift-'+vkey+'.css', 'utf8'),
-          script:fs.readFileSync(__dirname + '/node_modules/svift-frontend/build/svift-'+vkey+'.min.js', 'utf8')
+          style:fs.readFileSync(rootDir + '/node_modules/svift-frontend/build/svift-'+vkey+'.css', 'utf8'),
+          script:fs.readFileSync(rootDir + '/node_modules/svift-frontend/build/svift-'+vkey+'.min.js', 'utf8')
         }
       }
     }
